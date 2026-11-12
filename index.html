@@ -740,25 +740,22 @@ footer{padding:26px 0;font-size:14px;color:var(--soft)}
   el('polygon',{points:'238,138 322,138 520,300 40,300',fill:'#1B2350'},sv);
   var sDash=el('path',{d:'M280 150V300',stroke:'#E9ECF8','stroke-width':3,'stroke-dasharray':'14 16',opacity:.55},sv);
   var sFar=el('polygon',{fill:'#E5402F',opacity:.6},sv),sFarBox=el('rect',{fill:'none','stroke-width':2},sv);
+  var sNext=el('polygon',{points:octPts(300,127,4),fill:'#E5402F',opacity:.8},sv);
   var sPole=el('path',{stroke:'#9AA3CC','stroke-width':3},sv),sSign=el('polygon',{fill:'#E5402F',stroke:'#fff','stroke-width':2},sv),sBox=el('rect',{fill:'none','stroke-width':3},sv);
   var sTag=el('text',{'font-size':16,'font-weight':700,'font-family':FT},sv);
   var sPill=el('rect',{x:14,y:12,width:262,height:34,rx:17,'stroke-width':2},sv),sPillT=el('text',{x:145,y:35,'text-anchor':'middle','font-size':16,'font-weight':700,'font-family':FT},sv);
   function drawSSV(t){
     if(!H.raw)return;
-    var vis=t>=6&&t<=31,p=Math.min(1,Math.max(0,(t-6)/25)),e=p*p,cx=326+e*170,cy=126-e*56,r=5+e*27,mine=H.raw[t]===1,st=H.hmm[t]===1,col=mine?C.amber:'#9AA3CC',dash=mine?'none':'5 4';
+    var q=Math.max(0,(t-6)/25),e=q*q,cx=326+e*170,cy=126-e*56,r=5+e*27,vis=cx-r<560,real=H.truth[t]===1,mine=H.raw[t]===1,st=H.hmm[t]===1,col=mine?C.amber:'#9AA3CC',dash=mine?'none':'5 4';
     sDash.setAttribute('stroke-dashoffset',t*7);
     attrs(sSign,{points:octPts(cx,cy,r),display:vis?'inline':'none'});
     attrs(sPole,{d:'M'+cx.toFixed(1)+' '+(cy+r).toFixed(1)+'V'+(140+e*130).toFixed(1),display:vis?'inline':'none'});
-    var fx=vis?170-e*120:150,fy=vis?124-e*14:124,fr=vis?5+e*7:5;
+    var fx=170-e*120,fy=124-e*14,fr=5+e*7,tx=vis?cx:300,ty=vis?cy:127,tr=vis?r:4,word=mine?(real?'per-frame: mine':'per-frame: mine (false alarm)'):(real?'per-frame: not mine (missed)':'per-frame: not mine');
     attrs(sFar,{points:octPts(fx,fy,fr)});
-    attrs(sFarBox,{x:fx-fr-5,y:fy-fr-5,width:2*fr+10,height:2*fr+10,stroke:vis?'#9AA3CC':col,'stroke-dasharray':vis?'5 4':dash});
-    if(vis){
-      attrs(sBox,{x:cx-r-7,y:cy-r-7,width:2*r+14,height:2*r+14,display:'inline',stroke:col,'stroke-dasharray':dash});
-      attrs(sTag,r>15?{x:cx-r-16,y:cy+5,'text-anchor':'end',fill:col}:{x:cx-r-7,y:cy-r-14,'text-anchor':'start',fill:col});sTag.textContent=mine?'per-frame: mine':'per-frame: not mine';
-    }else{
-      sBox.setAttribute('display','none');
-      attrs(sTag,{x:fx-fr-5,y:fy-fr-12,'text-anchor':'start',fill:col});sTag.textContent=mine?'per-frame: mine (false alarm)':'per-frame: not mine';
-    }
+    attrs(sFarBox,{x:fx-fr-5,y:fy-fr-5,width:2*fr+10,height:2*fr+10,stroke:'#9AA3CC','stroke-dasharray':'5 4'});
+    sNext.setAttribute('display',vis?'none':'inline');
+    attrs(sBox,{x:tx-tr-7,y:ty-tr-7,width:2*tr+14,height:2*tr+14,stroke:col,'stroke-dasharray':dash});
+    attrs(sTag,vis&&r>15?{x:cx-r-16,y:cy+5,'text-anchor':'end',fill:col}:{x:Math.min(tx-tr-7,330),y:ty-tr-14,'text-anchor':'start',fill:col});sTag.textContent=word;
     attrs(sPill,{fill:st?C.amber:'none',stroke:st?C.amber:'#9AA3CC'});
     sPillT.setAttribute('fill',st?C.ink:'#9AA3CC');sPillT.textContent=st?'HMM: stop sign for my lane':'HMM: no sign for my lane';
     hm.querySelectorAll('.strip').forEach(function(s){for(var i=0;i<s.children.length;i++)s.children[i].classList.toggle('cur',i===t)});
