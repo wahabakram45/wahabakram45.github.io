@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abdul Wahab Akram, machine learning engineer</title>
+<meta name="description" content="Senior machine learning engineer. Churn models for 2M+ telecom subscribers, dashcam vision on 100k+ vehicles, phishing detection across millions of URLs a day.">
+<meta property="og:title" content="Abdul Wahab Akram, machine learning engineer">
+<meta property="og:description" content="Churn models for 2M+ telecom subscribers, dashcam vision on 100k+ vehicles, phishing detection across millions of URLs a day.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#EDF0F7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23131A3A'/%3E%3Ccircle cx='11' cy='20' r='4' fill='%232B4BFF'/%3E%3Ccircle cx='21' cy='12' r='4' fill='%23FFAA1A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDF0F7; --panel:#F9FAFD; --ink:#131A3A; --soft:#4A527A;
+  --cobalt:#2B4BFF; --amber:#FFAA1A; --stop:#E5402F; --mist:#C5CCE2; --navy:#0D1330;
+  --display:"Bricolage Grotesque","Hanken Grotesk",system-ui,sans-serif;
+  --body:"Hanken Grotesk",system-ui,sans-serif;
+  --wrap:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1.02}
+p{margin:0}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--mist)}
+.nav .wrap{display:flex;gap:14px;justify-content:space-between;align-items:center;height:58px}
+.nav-name{white-space:nowrap;font:800 18px var(--display);text-decoration:none;letter-spacing:-.01em}
+.nav-links{display:flex;gap:26px;font-weight:500;font-size:15px}
+.nav-links a{text-decoration:none}
+.nav-links a:hover{color:var(--cobalt)}
+
+/* hero */
+.hero{padding:72px 0 40px}
+.hero h1{font-weight:800;font-size:clamp(44px,8.6vw,124px);letter-spacing:-.045em;line-height:.92;max-width:13ch}
+.hero-sub{margin-top:28px;max-width:56ch;font-size:clamp(18px,1.6vw,21px);color:var(--soft)}
+.hero-sub strong{color:var(--ink);font-weight:700}
+
+.lab{margin-top:56px;background:var(--panel);border:1px solid var(--mist);border-radius:22px;padding:26px 28px 22px}
+.lab-top{display:flex;flex-wrap:wrap;gap:20px 48px;justify-content:space-between;align-items:flex-end}
+.lab-top p{max-width:46ch}
+.lab-top p b{font-family:var(--display);font-size:22px;display:block;letter-spacing:-.01em;margin-bottom:4px}
+.readouts{display:flex;gap:34px}
+.readout{min-width:104px}
+.readout output{display:block;font:800 46px/1 var(--display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.readout span{font-size:14px;color:var(--soft)}
+#swarm{display:block;width:100%;height:auto;margin-top:14px;touch-action:none;cursor:ew-resize;user-select:none}
+.lab-foot{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between;margin-top:6px;font-size:14px;color:var(--soft)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:7px;vertical-align:-1px}
+#thr{width:min(320px,100%);accent-color:var(--cobalt)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:#fff;padding:10px 16px;border-radius:8px;z-index:20}
+.skip:focus{left:12px}
+.nav-links a.on{color:var(--cobalt);box-shadow:0 2px 0 var(--cobalt)}
+
+/* career path */
+.path{padding:40px 28px 0}
+.path h2{font:600 22px var(--display);letter-spacing:-.01em;margin-bottom:16px}
+.ribbon{position:relative;display:flex;gap:3px;height:78px}
+.seg{position:relative;min-width:0;border-radius:10px;padding:10px 12px;text-decoration:none;overflow:hidden;white-space:nowrap;display:flex;flex-direction:column;justify-content:center;color:#fff}
+.seg b{font:800 19px var(--display);letter-spacing:-.02em;overflow:hidden;text-overflow:ellipsis}
+.seg span{font-size:13.5px;opacity:.85;overflow:hidden;text-overflow:ellipsis}
+.seg:hover{filter:brightness(1.12)}
+.seg.s0{background:var(--mist);color:var(--ink)} .seg.s0{padding:10px 5px;align-items:center} .seg.s0 b{font-size:14px;text-overflow:clip} .seg.s1{background:var(--cobalt)} .seg.s2{background:var(--navy)} .seg.s3{background:var(--amber);color:var(--ink)}
+.promo{position:absolute;top:-7px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:#fff;border:3px solid var(--ink);z-index:2}
+.axis{position:relative;height:58px;margin-top:6px;font:600 14px var(--display);color:var(--soft)}
+.axis span{position:absolute;top:0;transform:translateX(-50%)}
+.axis span::before{content:"";display:block;width:1px;height:8px;background:var(--soft);margin:0 auto 3px}
+.axis em{position:absolute;top:33px;transform:translateX(-50%);font:500 13px var(--body);color:var(--ink);white-space:nowrap}
+
+/* frame strips */
+.strip{display:grid;grid-template-columns:repeat(48,1fr);gap:2px;margin-top:6px}
+.strip i{height:22px;border-radius:2px;background:#263062}
+.strip i.on{background:var(--amber)}
+.strip i.truth{background:#9AA3CC}
+.strip-name{font-size:13.5px;margin-top:14px;display:flex;justify-content:space-between;gap:12px}
+.fig-btn{font:700 14px var(--body);background:transparent;color:inherit;border:1.5px solid currentColor;border-radius:999px;padding:7px 14px;cursor:pointer;margin-top:16px}
+.fig-btn:hover{background:var(--amber);color:var(--ink);border-color:var(--amber)}
+
+/* approach */
+.ways{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 56px;margin-top:36px}
+.way{border-top:1px solid var(--ink);padding:20px 0 34px}
+.way h3{font-size:24px;font-weight:600;margin-bottom:8px}
+.way p{color:var(--soft);max-width:52ch}
+.way p b{color:var(--ink);font-weight:500}
+
+/* animated tracks */
+.track.anim .track-fill{transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.2,.7,.2,1) .15s}
+.track.anim .track-b{opacity:0;transition:opacity .4s 1s}
+.track.anim.in .track-fill{transform:scaleX(1)}
+.track.anim.in .track-b{opacity:1}
+
+/* chapters */
+.chapter{padding:96px 0 40px;scroll-margin-top:40px}
+.chapter-head{display:grid;grid-template-columns:1fr auto;gap:10px 40px;align-items:end;border-bottom:2px solid currentColor;padding-bottom:20px}
+.chapter-head h2{font-weight:800;font-size:clamp(40px,6vw,84px);letter-spacing:-.04em}
+.chapter-when{font:600 20px var(--display);text-align:right;white-space:nowrap}
+.chapter-role{grid-column:1/-1;max-width:68ch;color:var(--soft)}
+.chapter-role b{color:var(--ink)}
+
+.case{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:48px;padding:56px 0;border-bottom:1px solid var(--mist);align-items:start}
+.case:last-child{border-bottom:0}
+.case h3{font-weight:600;font-size:clamp(26px,2.8vw,36px);margin-bottom:16px}
+.case-text p{max-width:54ch}
+.case-text p+p{margin-top:12px}
+.case-tools{margin-top:18px;font-size:14.5px;color:var(--soft)}
+.fig{background:var(--panel);border:1px solid var(--mist);border-radius:18px;padding:22px}
+.fig svg{display:block;width:100%;height:auto;border-radius:10px}
+.fig-note{font-size:13.5px;color:var(--soft);margin-top:12px}
+
+/* metric tracks */
+.track{position:relative;height:54px;margin-top:22px}
+.track::before{content:"";position:absolute;left:0;right:0;top:34px;height:6px;border-radius:3px;background:var(--mist)}
+.track-fill{position:absolute;top:34px;height:6px;border-radius:3px;background:var(--amber);left:calc(var(--a)*1%);width:calc((var(--b) - var(--a))*1%)}
+.track-a,.track-b{position:absolute;top:0;transform:translateX(-50%);font:600 15px var(--display);white-space:nowrap}
+.track-a{left:calc(var(--a)*1%);color:var(--soft)}
+.track-b{left:calc(var(--b)*1%);font-weight:800;font-size:19px;top:-3px}
+.track-a::after,.track-b::after{content:"";position:absolute;left:50%;top:29px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--panel);border:3px solid var(--soft)}
+.track-b::after{background:var(--amber);border-color:var(--ink);top:32px}
+.track-label{font-size:14px;color:var(--soft);margin-top:4px}
+.track:not(.shift) .track-b{transform:translateX(-85%)}
+.track:not(.shift) .track-b::after{left:85%}
+.track .track-b[style]::after{left:12%}
+
+/* flow chains */
+.lane{padding:16px 0}
+.lane+.lane{border-top:1px dashed var(--mist)}
+.lane-name{font:600 15px var(--display);margin-bottom:12px}
+.chain{display:flex;gap:30px;align-items:stretch}
+.node{position:relative;flex:1;background:#fff;border:1.5px solid var(--ink);border-radius:12px;padding:12px 14px;font-size:14.5px;line-height:1.35}
+.node b{display:block;font-family:var(--display);font-size:16px}
+.node+.node::before{content:"";position:absolute;left:-24px;top:50%;width:14px;height:2px;background:var(--ink)}
+.node+.node::after{content:"";position:absolute;left:-12px;top:50%;margin-top:-5px;border:5px solid transparent;border-left:7px solid var(--ink)}
+.node.hot{background:var(--amber)}
+.node.blue{background:var(--cobalt);color:#fff;border-color:var(--cobalt)}
+.split{display:grid;grid-template-columns:auto 1fr;gap:0 30px;align-items:center}
+.split>.node{flex:none;align-self:center}
+.split .chain .node:first-child::before{content:"";position:absolute;left:-24px;top:50%;width:14px;height:2px;background:var(--ink)}
+.split .chain .node:first-child::after{content:"";position:absolute;left:-12px;top:50%;margin-top:-5px;border:5px solid transparent;border-left:7px solid var(--ink)}
+.split .rows{display:grid;gap:14px}
+
+.also{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px}
+.also h3{font-size:22px;margin-bottom:10px}
+.also p{font-size:16px;color:var(--soft)}
+.also-wrap{padding:48px 0 0}
+
+/* navy band */
+.band{background:var(--navy);color:#E9ECF8;margin-top:72px;padding-bottom:56px}
+.band .chapter-role,.band .case-tools,.band .fig-note,.band .track-label,.band .track-a{color:#9AA3CC}
+.band .chapter-role b{color:#fff}
+.band .case{border-color:#263062}
+.band .fig{background:#141B42;border-color:#263062}
+.band .track::before{background:#2A3470}
+.band .track-a::after{background:#141B42;border-color:#9AA3CC}
+.band .track-b::after{border-color:#fff}
+.band .node{background:#141B42;border-color:#9AA3CC;color:#E9ECF8}
+.band .node+.node::before{background:#9AA3CC}
+.band .node+.node::after{border-left-color:#9AA3CC}
+.band .node.hot{background:var(--amber);color:var(--ink);border-color:var(--amber)}
+.band :focus-visible{outline-color:var(--amber)}
+
+/* url cells */
+.url{display:flex;flex-wrap:wrap;gap:3px;font:600 19px/1 var(--body)}
+.url span{width:25px;height:36px;display:grid;place-items:center;border-radius:5px;background:color-mix(in srgb,var(--stop) calc(var(--h)*100%),#fff);border:1px solid var(--mist)}
+.verdict{margin-top:16px;display:flex;gap:10px;align-items:center;font-weight:700}
+.verdict i{width:12px;height:12px;border-radius:50%;background:var(--stop)}
+
+/* toolkit + background */
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 40px;margin-top:36px}
+.tool{border-top:1px solid var(--ink);padding:18px 0 30px}
+.tool h3{font-size:21px;font-weight:600;margin-bottom:8px}
+.tool p{color:var(--soft);font-size:16px}
+.section-title{font-weight:800;font-size:clamp(36px,5vw,64px);letter-spacing:-.04em}
+.bg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;margin-top:36px}
+.bg h3{font-size:24px;font-weight:600;margin-bottom:14px}
+.rows{list-style:none;margin:0;padding:0}
+.rows li{display:grid;grid-template-columns:86px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--mist)}
+.rows time{font:600 15px var(--display);color:var(--soft)}
+.rows b{display:block}
+.rows span{color:var(--soft);font-size:16px}
+
+/* contact */
+.contact{background:var(--cobalt);color:#fff;margin-top:96px;padding:88px 0}
+.contact h2{font-weight:800;font-size:clamp(40px,7vw,104px);letter-spacing:-.045em;max-width:12ch}
+.contact-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px;align-items:center}
+.mail{font:600 clamp(18px,2.4vw,26px) var(--display);margin-right:10px;word-break:break-all}
+.btn{font:700 16px var(--body);background:#fff;color:var(--ink);border:0;border-radius:999px;padding:13px 22px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px #fff}
+.btn:hover{background:var(--amber);color:var(--ink);box-shadow:none}
+.contact :focus-visible{outline-color:#fff}
+footer{padding:26px 0;font-size:14px;color:var(--soft)}
+
+@media (max-width:900px){
+  .case{grid-template-columns:1fr;gap:28px;padding:44px 0}
+  .also,.grid3,.bg,.ways{grid-template-columns:1fr;gap:28px}
+  .ways{gap:0}
+  .ribbon{flex-direction:column;height:auto}
+  .seg{flex:none!important;padding:12px 14px}
+  .promo,.axis{display:none}
+  .grid3{gap:0}
+  .chapter-head{grid-template-columns:1fr}
+  .chapter-when{text-align:left}
+  .nav-links{gap:16px;font-size:14px}
+  .hero{padding-top:48px}
+  .readout output{font-size:36px}
+  .readouts{gap:18px}
+  .readout{min-width:0}
+}
+@media (max-width:620px){
+  .wrap{padding:0 18px}
+  .nav-links a:nth-child(2),.nav-links a:nth-child(3){display:none}
+  .path{padding:32px 18px 0}
+  .lab{padding:18px 16px}
+  .chain{flex-direction:column;gap:26px}
+  .node+.node::before,.split .chain .node:first-child::before{left:22px;top:-22px;width:2px;height:14px}
+  .node+.node::after,.split .chain .node:first-child::after{left:18px;top:-9px;margin-top:0;border:5px solid transparent;border-top:7px solid var(--ink)}
+  .band .node+.node::after{border-left-color:transparent;border-top-color:#9AA3CC}
+  .split{grid-template-columns:1fr;gap:14px}
+  .split .chain{flex-direction:row;gap:26px}
+  .split .chain .node:first-child::before,.split .chain .node:first-child::after{display:none}
+  .split .chain .node+.node::before{left:-22px;top:50%;width:12px;height:2px}
+  .split .chain .node+.node::after{left:-12px;top:50%;margin-top:-5px;border:5px solid transparent;border-left:7px solid var(--ink)}
+  .nav-name{font-size:16px}
+  .readout output{font-size:30px}
+  .url span{width:20px;height:30px;font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#work">Skip to work</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="nav-name" href="#top">Abdul Wahab Akram</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#background">Background</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero wrap">
+  <h1>I ship machine learning that holds up in production.</h1>
+  <p class="hero-sub">Senior ML engineer, 7 years in. <strong>Churn models for 2M+ telecom subscribers</strong>, <strong>dashcam vision on 100k+ vehicles</strong>, and <strong>phishing detection across millions of URLs a day</strong>. I own models end to end: features, training, CI/CD, monitoring, deployment.</p>
+
+  <div class="lab">
+    <div class="lab-top">
+      <p><b>Drag the threshold.</b>Every model I've shipped came down to this trade. Catch more and you flag people you shouldn't. Flag fewer and you miss some. The job is picking the point the business can live with.</p>
+      <div class="readouts" aria-live="off">
+        <div class="readout"><output id="o-prec">0%</output><span>precision</span></div>
+        <div class="readout"><output id="o-rec">0%</output><span>recall</span></div>
+        <div class="readout"><output id="o-flag">0</output><span>flagged of <span id="o-total"></span></span></div>
+      </div>
+    </div>
+    <svg id="swarm" viewBox="0 0 1000 390" role="img" aria-label="Two groups of dots sorted by model score, with a movable decision threshold"></svg>
+    <div class="lab-foot">
+      <div class="legend">
+        <span><i style="background:var(--amber)"></i>will churn</span>
+        <span><i style="background:var(--cobalt)"></i>won't churn</span>
+        <span><i style="background:transparent;box-shadow:inset 0 0 0 2px var(--amber)"></i>missed</span>
+        <span>Toy data, sorted by model score</span>
+        <noscript>The charts on this page need JavaScript.</noscript>
+      </div>
+      <label><span class="sr">Decision threshold</span><input id="thr" type="range" min="2" max="98" value="56"></label>
+    </div>
+  </div>
+</section>
+
+<section class="wrap path" aria-label="Career path">
+  <h2>7 years, 3 industries, 2 promotions</h2>
+  <div class="ribbon">
+    <a class="seg s0" style="flex:4" href="#background" title="Lab Instructor, FAST-NUCES, Aug to Dec 2019"><b>FAST</b></a>
+    <a class="seg s1" style="flex:25" href="#slashnext"><b>SlashNext</b><span>Phishing detection, NLP</span></a>
+    <a class="seg s2" style="flex:42" href="#motive"><b>Motive</b><span>Dashcam computer vision</span></a>
+    <a class="seg s3" style="flex:17" href="#beyond-one"><b>Beyond ONE</b><span>Telecom ML</span></a>
+    <i class="promo" style="left:26.1%"></i><i class="promo" style="left:48.9%"></i>
+  </div>
+  <div class="axis" aria-hidden="true">
+    <span style="left:5.7%">2020</span><span style="left:19.3%">2021</span><span style="left:33%">2022</span><span style="left:46.6%">2023</span><span style="left:60.2%">2024</span><span style="left:73.9%">2025</span><span style="left:87.5%">2026</span>
+    <em style="left:26.1%">promoted to ML Engineer</em><em style="left:48.9%">promoted to L4</em>
+  </div>
+</section>
+
+<div id="work">
+
+<!-- ================= BEYOND ONE ================= -->
+<section class="chapter wrap" id="beyond-one">
+  <div class="chapter-head">
+    <h2>Beyond ONE</h2>
+    <div class="chapter-when">Jul 2025 to now</div>
+    <p class="chapter-role"><b>Senior Machine Learning Engineer.</b> Telco group behind Virgin Mobile and FRiENDi mobile across the GCC and LATAM. I joined as the team's first ML engineer and own model development and the deployment pipeline.</p>
+  </div>
+
+  <article class="case">
+    <div class="case-text">
+      <h3>Who won't renew their bundle?</h3>
+      <p>Non-renewal models for Virgin Mobile and FRiENDi mobile in KSA, covering 2M+ subscribers and scoring around 2M a day.</p>
+      <p>Retention campaigns that targeted the predictions delivered a 6% uplift in renewals. An upsell model sits on top for the people likely to renew anyway.</p>
+      <p>A second model covers pay-as-you-go subscribers with no active plan, which is a harder signal to read.</p>
+      <p class="case-tools">XGBoost, PySpark, SHAP, Databricks, MLflow</p>
+    </div>
+    <div class="fig">
+      <div class="split">
+        <div class="node blue"><b>2M+ subscribers</b>scored in batch</div>
+        <div class="rows">
+          <div class="chain"><div class="node hot"><b>Likely to lapse</b>non-renewal model</div><div class="node"><b>Retention campaign</b>6% renewal uplift</div></div>
+          <div class="chain"><div class="node"><b>Likely to renew</b></div><div class="node"><b>Upsell model</b>next best bundle</div></div>
+        </div>
+      </div>
+      <div class="track" style="--a:80;--b:85"><span class="track-fill"></span><span class="track-b">80 to 85%</span></div>
+      <p class="track-label">Bundle non-renewal: precision, at 65 to 70% recall</p>
+      <div class="track" style="--a:90;--b:92"><span class="track-fill"></span><span class="track-b">90 to 92%</span></div>
+      <p class="track-label">Pay-as-you-go churn: precision, at 80 to 85% recall</p>
+    </div>
+  </article>
+
+  <article class="case">
+    <div class="case-text">
+      <h3>Reasons a campaign tool can use, with zero LLM calls in production</h3>
+      <p>Campaign teams wanted to know why someone wouldn't renew. The campaign tool only takes a fixed dropdown.</p>
+      <p>So the LLM runs once, offline. It turns SHAP explanations across 20 to 25 features into 15 to 20 canonical drivers with percentile thresholds.</p>
+      <p>Production never calls it. Each subscriber's top 3 SHAP features go through a deterministic lookup and come out as a dropdown reason. Same answer every time, and nothing to pay per prediction.</p>
+      <p class="case-tools">SHAP, OpenAI API, semantic clustering</p>
+    </div>
+    <div class="fig">
+      <div class="lane">
+        <p class="lane-name">Once, offline</p>
+        <div class="chain">
+          <div class="node"><b>SHAP explanations</b>20 to 25 features</div>
+          <div class="node blue"><b>LLM</b>groups and names them</div>
+          <div class="node hot"><b>15 to 20 drivers</b>with percentile thresholds</div>
+        </div>
+      </div>
+      <div class="lane">
+        <p class="lane-name">Every scoring run</p>
+        <div class="chain">
+          <div class="node"><b>Top 3 SHAP features</b>per subscriber</div>
+          <div class="node hot"><b>Lookup table</b>deterministic</div>
+          <div class="node"><b>Dropdown reason</b>in the campaign tool</div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="case">
+    <div class="case-text">
+      <h3>168 forecasts from 14 data points</h3>
+      <p>Finance needed the month-end size of 168 customer-base segments. I had 14 monthly closings of history. That's not enough for 168 separate time-series models, or even one good one.</p>
+      <p>But customers don't appear from nowhere. They move between segments. So I modelled the movement: one recency-weighted transition matrix, where recent months count more.</p>
+      <p>WAPE came in under 5% in backtests.</p>
+      <p class="case-tools">Markov models, PySpark, Pandas</p>
+    </div>
+    <div class="fig">
+      <svg id="matrix" viewBox="0 0 560 348" role="img" aria-label="Heatmap of a segment transition matrix beside 14 monthly weights that grow toward the most recent month"></svg>
+      <p class="fig-note">Illustration. Left: where a segment's customers end up next month. Right: how much each of the 14 closings counts.</p>
+    </div>
+  </article>
+
+  <div class="also-wrap">
+    <ul class="also">
+      <li><h3>Prefect on-prem to Databricks</h3><p>Moved scheduled training, batch scoring and retraining over. MLflow model registry, CI/CD on every model and data change, drift and performance dashboards. A PII masking step means models never see customer identities.</p></li>
+      <li><h3>Ask the data in plain English</h3><p>Set up a Databricks Genie agent over the customer-360 and customer-base tables (metadata, instructions, example SQL) so business users get answers without writing SQL.</p></li>
+      <li><h3>Getting the models used</h3><p>The hardest part wasn't modelling. Campaigns ran one fixed offer for everyone near bundle expiry. I worked through the numbers with a non-technical team until model-led targeting made sense to them.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= MOTIVE ================= -->
+<section class="band" id="motive">
+<div class="chapter wrap">
+  <div class="chapter-head">
+    <h2>Motive</h2>
+    <div class="chapter-when">Jan 2022 to Jul 2025</div>
+    <p class="chapter-role"><b>Software Engineer, Machine Learning.</b> AI dashcams for fleet safety. Models that run in the cab, in real time, on 100k+ vehicles. Joined at L3, promoted to L4 in March 2023.</p>
+  </div>
+
+  <article class="case">
+    <div class="fig">
+      <svg viewBox="0 0 560 300" role="img" aria-label="Dashcam view of an intersection. The stop sign facing the driver is kept, a stop sign for cross traffic is dropped.">
+        <rect width="560" height="300" fill="#070B1F"/>
+        <rect y="128" width="560" height="20" fill="#1B2350"/>
+        <polygon points="238,138 322,138 520,300 40,300" fill="#1B2350"/>
+        <path d="M280 150V300" stroke="#E9ECF8" stroke-width="3" stroke-dasharray="14 16" opacity=".55"/>
+        <path d="M250 150H310" stroke="#E9ECF8" stroke-width="4" opacity=".8"/>
+        <path d="M392 132V196" stroke="#9AA3CC" stroke-width="4"/>
+        <polygon class="oct" data-c="392,112,21" fill="#E5402F" stroke="#fff" stroke-width="2"/>
+        <rect x="362" y="82" width="60" height="60" fill="none" stroke="#FFAA1A" stroke-width="3"/>
+        <text x="362" y="72" fill="#FFAA1A" font-size="17" font-weight="700" font-family="Hanken Grotesk,sans-serif">my lane: keep</text>
+        <path d="M96 118V136" stroke="#9AA3CC" stroke-width="3"/>
+        <polygon class="oct" data-c="96,108,11" fill="#E5402F" opacity=".55"/>
+        <rect x="78" y="90" width="36" height="36" fill="none" stroke="#9AA3CC" stroke-width="2" stroke-dasharray="5 4"/>
+        <text x="40" y="78" fill="#9AA3CC" font-size="17" font-family="Hanken Grotesk,sans-serif">cross traffic: drop</text>
+      </svg>
+      <div class="chain" style="margin-top:18px">
+        <div class="node"><b>Detector</b>finds every stop sign</div>
+        <div class="node"><b>Scene head</b>what kind of junction</div>
+        <div class="node hot"><b>HMM</b>is it mine, over time</div>
+      </div>
+      <div id="hmm" aria-label="Toy demo: noisy per-frame guesses smoothed by a two-state hidden Markov model">
+        <p class="strip-name"><span>What's really there</span></p><div class="strip" data-row="truth"></div>
+        <p class="strip-name"><span>Per-frame guess</span><span data-wrong="raw"></span></p><div class="strip" data-row="raw"></div>
+        <p class="strip-name"><span>After the HMM</span><span data-wrong="hmm"></span></p><div class="strip" data-row="hmm"></div>
+        <button class="fig-btn" type="button" id="reroll">Shuffle the noise</button>
+      </div>
+      <p class="fig-note">A toy two-state HMM running in your browser over 48 frames. It can't flip state on one odd frame, so the flicker goes away.</p>
+    </div>
+    <div class="case-text">
+      <h3>Stop sign violations, minus the signs that aren't yours</h3>
+      <p>The detector was fine at finding stop signs. The trouble was multi-lane junctions, where it found signs meant for someone else and blamed the driver.</p>
+      <p>I led it end to end. Fine-tuned the detector, added a scene-classification head, and put a Hidden Markov Model on top to drop the irrelevant signs across frames.</p>
+      <p>Validated by large-scale backtesting on production fleet data, then deployed to 100k+ vehicles.</p>
+      <div class="track shift" style="--a:60;--b:94"><span class="track-fill"></span><span class="track-a">60%</span><span class="track-b">94%</span></div>
+      <p class="track-label">Precision, before and after</p>
+      <p class="case-tools">PyTorch, object detection, scene classification, HMM</p>
+    </div>
+  </article>
+
+  <article class="case">
+    <div class="fig">
+      <div class="chain">
+        <div class="node"><b>Frames</b>dashcam video</div>
+        <div class="node"><b>Embeddings</b>from detector and scene models</div>
+        <div class="node hot"><b>ConvLSTM, LSTM</b>context over time</div>
+        <div class="node"><b>Event</b>stable, not flickering</div>
+      </div>
+      <p class="fig-note">Hand-written rules and thresholds, replaced by a model that learns the temporal pattern from data.</p>
+    </div>
+    <div class="case-text">
+      <h3>Replacing hand-tuned rules with a temporal model</h3>
+      <p>Event logic was a pile of rules and thresholds. Each one fixed a case and broke another.</p>
+      <p>I started and led a pipeline that feeds visual embeddings from the detection and scene models into ConvLSTM and LSTM architectures, so the model learns what an event looks like over time.</p>
+      <p>Precision improved 4% over the rules, and it held up better at multi-lane intersections and under occlusion.</p>
+      <p class="case-tools">PyTorch, ConvLSTM, LSTM, visual embeddings</p>
+    </div>
+  </article>
+
+  <article class="case">
+    <div class="fig">
+      <svg viewBox="0 0 560 300" role="img" aria-label="Dashcam view of a highway. The vehicle ahead is tracked across frames and triggers a forward collision warning.">
+        <rect width="560" height="300" fill="#070B1F"/>
+        <polygon points="225,110 335,110 560,300 0,300" fill="#1B2350"/>
+        <path d="M280 110V300" stroke="#E9ECF8" stroke-width="3" stroke-dasharray="14 16" opacity=".5"/>
+        <rect x="292" y="118" width="34" height="30" fill="none" stroke="#FFAA1A" stroke-width="1.5" opacity=".3"/>
+        <rect x="296" y="128" width="50" height="44" fill="none" stroke="#FFAA1A" stroke-width="2" opacity=".55"/>
+        <rect x="312" y="160" width="96" height="84" rx="6" fill="#2A3470"/>
+        <rect x="320" y="218" width="16" height="9" fill="#E5402F"/><rect x="384" y="218" width="16" height="9" fill="#E5402F"/>
+        <rect x="304" y="152" width="112" height="100" fill="none" stroke="#FFAA1A" stroke-width="3"/>
+        <text x="304" y="272" fill="#FFAA1A" font-size="17" font-weight="700" font-family="Hanken Grotesk,sans-serif">track 7: closing</text>
+        <rect x="196" y="140" width="40" height="32" rx="4" fill="#2A3470"/>
+        <rect x="190" y="134" width="52" height="44" fill="none" stroke="#9AA3CC" stroke-width="2" stroke-dasharray="5 4"/>
+        <text x="70" y="126" fill="#9AA3CC" font-size="17" font-family="Hanken Grotesk,sans-serif">track 4: other lane</text>
+        <rect x="150" y="22" width="260" height="44" rx="22" fill="#E5402F"/>
+        <text x="280" y="50" text-anchor="middle" fill="#fff" font-size="19" font-weight="700" font-family="Hanken Grotesk,sans-serif">Forward collision warning</text>
+      </svg>
+    </div>
+    <div class="case-text">
+      <h3>Forward collision warnings drivers stop ignoring</h3>
+      <p>An in-cab alert that's wrong 4 times out of 5 trains drivers to tune it out. That's where this one started.</p>
+      <p>I led the design and development: multi-object tracking so each vehicle keeps its identity across frames, then post-filtering rules pulled from the data instead of from guesses.</p>
+      <p>Failure-mode analysis fed a pipeline that collected edge cases for review, so each round of fixes had real examples behind it.</p>
+      <div class="track shift" style="--a:20;--b:80"><span class="track-fill"></span><span class="track-a">20%</span><span class="track-b">80%</span></div>
+      <p class="track-label">Alert precision, before and after</p>
+      <p class="case-tools">Multi-object tracking, real-time inference, edge-case pipelines</p>
+    </div>
+  </article>
+
+  <article class="case">
+    <div class="fig">
+      <svg id="events" viewBox="0 0 560 190" role="img" aria-label="Single signals on a timeline grouped into two behavioural events"></svg>
+      <p class="fig-note">Illustration. Single signals on a trip, grouped by configurable time windows into events a safety manager can act on.</p>
+    </div>
+    <div class="case-text">
+      <h3>From single signals to driving behaviour</h3>
+      <p>One lane swerve is noise. Five in ten minutes is a pattern.</p>
+      <p>I extended a Kubernetes-hosted production event service with configurable temporal aggregation, so atomic signals roll up into events like Consistent Drowsy Driving and Repeated Lane Swerving.</p>
+      <p>It runs across millions of driving hours a day.</p>
+      <p class="case-tools">Python, DynamoDB, Terraform, Kubernetes, AWS</p>
+    </div>
+  </article>
+</div>
+</section>
+
+<!-- ================= SLASHNEXT ================= -->
+<section class="chapter wrap" id="slashnext">
+  <div class="chapter-head">
+    <h2>SlashNext</h2>
+    <div class="chapter-when">Dec 2019 to Jan 2022</div>
+    <p class="chapter-role"><b>Machine Learning Engineer.</b> Real-time phishing detection on a platform that analysed millions of suspicious URLs a day. Joined as an Associate ML Engineer, promoted in July 2021.</p>
+  </div>
+
+  <article class="case">
+    <div class="case-text">
+      <h3>Reading URLs one character at a time</h3>
+      <p>Attackers swap an i for a 1, pad a domain with reassuring words, and bury the real host. Word-level features miss a lot of that.</p>
+      <p>On the NLP team I engineered lexical, structural and content features from URLs and HTML bodies, and ran the experiments from rule-based template matching through TF-IDF and Word2Vec to a character-level LSTM I designed for obfuscated and zero-day URLs.</p>
+      <p>In security, a false alarm blocks a real site. We kept the false-positive rate under 2%.</p>
+      <p class="case-tools">LSTMs, TF-IDF, Word2Vec, Scikit-learn</p>
+    </div>
+    <div class="fig">
+      <div class="url" id="url" aria-label="An example obfuscated URL with suspicious characters shaded"></div>
+      <div class="verdict"><i></i>Phishing</div>
+      <p class="fig-note">Illustration with a made-up URL. Darker cells are the characters a character-level model would lean on.</p>
+      <div class="track" style="--a:0;--b:2"><span class="track-fill"></span><span class="track-b" style="left:2%;transform:translateX(-12%)">under 2%</span></div>
+      <p class="track-label">False-positive rate</p>
+      <p class="lane-name" style="margin-top:26px">How the approach moved</p>
+      <div class="chain">
+        <div class="node"><b>Rule templates</b></div>
+        <div class="node"><b>TF-IDF</b></div>
+        <div class="node"><b>Word2Vec</b></div>
+        <div class="node hot"><b>Char LSTM</b></div>
+      </div>
+    </div>
+  </article>
+</section>
+</div>
+
+<!-- ================= APPROACH ================= -->
+<section class="chapter wrap" id="approach">
+  <h2 class="section-title">How I work</h2>
+  <div class="ways">
+    <div class="way"><h3>Look at the failures first</h3><p>The stop sign fix didn't come from a bigger detector. It came from reading the false alerts and seeing they were all the same junction type. <b>60% to 94% precision.</b></p></div>
+    <div class="way"><h3>Use the problem's structure</h3><p>14 data points can't feed 168 forecasting models. One transition matrix can, because customers move between segments. <b>WAPE under 5%.</b></p></div>
+    <div class="way"><h3>Build for whoever uses the output</h3><p>A campaign tool with a fixed dropdown doesn't want free text from an LLM. It wants one of 15 to 20 reasons, the same way every time. <b>Zero LLM calls in production.</b></p></div>
+    <div class="way"><h3>The simplest thing that holds</h3><p>Gradient-boosted trees for churn. An LLM once, offline. A two-state HMM on top of a detector. Deep models where the signal needs them, like video and obfuscated URLs.</p></div>
+  </div>
+</section>
+
+<!-- ================= TOOLKIT ================= -->
+<section class="chapter wrap" id="toolkit">
+  <h2 class="section-title">Toolkit</h2>
+  <div class="grid3">
+    <div class="tool"><h3>Machine learning</h3><p>XGBoost, Scikit-learn, PyTorch, PySpark, Pandas, NumPy, SHAP, Hidden Markov Models, forecasting</p></div>
+    <div class="tool"><h3>Vision and language</h3><p>Object detection, scene classification, multi-object tracking, ConvLSTM and LSTM, TF-IDF, Word2Vec</p></div>
+    <div class="tool"><h3>LLMs and agents</h3><p>OpenAI API, Databricks Genie agents, prompt design, semantic clustering</p></div>
+    <div class="tool"><h3>MLOps and data</h3><p>Databricks, MLflow tracking and model registry, CI/CD, Prefect, drift monitoring</p></div>
+    <div class="tool"><h3>Cloud and infrastructure</h3><p>AWS Lambda, EC2, S3 and DynamoDB, Terraform</p></div>
+    <div class="tool"><h3>Languages</h3><p>Python, SQL, Bash</p></div>
+  </div>
+</section>
+
+<!-- ================= BACKGROUND ================= -->
+<section class="chapter wrap" id="background">
+  <h2 class="section-title">Background</h2>
+  <div class="bg">
+    <div>
+      <h3>Education and research</h3>
+      <ul class="rows">
+        <li><time>2018 to 2020</time><div><b>MS Data Science, FAST-NUCES Lahore</b><span>Gold medalist.</span></div></li>
+        <li><time>Thesis</time><div><b>Fuzzy clustering of mixed data in Apache Spark</b><span>A PySpark algorithm that produces fuzzy partitions of mixed numeric and categorical data and weights each feature type, benchmarked against state-of-the-art methods on GCP.</span></div></li>
+        <li><time>2014 to 2018</time><div><b>BS Computer Science, GIFT University</b><span>Final-year project: an adaptive intelligent tutoring system that models each student and adjusts teaching style and difficulty.</span></div></li>
+        <li><time>2019</time><div><b>Lab Instructor, FAST-NUCES</b><span>Ran Programming Fundamentals and Object-Oriented Programming labs in C++.</span></div></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Awards</h3>
+      <ul class="rows">
+        <li><time>2023</time><div><b>Most Valuable Player Engineering Award</b><span>Motive Engineering Meetup.</span></div></li>
+        <li><time>2020</time><div><b>Gold Medal, MS Data Science</b><span>FAST-NUCES.</span></div></li>
+        <li><time>2019</time><div><b>Runner-up, Data Science Competition</b><span>SOFTEC'19, FAST-NUCES.</span></div></li>
+      </ul>
+      <h3 style="margin-top:40px">Courses and certificates</h3>
+      <ul class="rows">
+        <li><time>2022</time><div><b>MLExpert</b><span>AlgoExpert.</span></div></li>
+        <li><time>2022</time><div><b>Convolutional Neural Networks</b><span>DeepLearning.AI.</span></div></li>
+        <li><time>2021</time><div><b>AWS Machine Learning Foundations</b><span>Amazon Web Services.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Got a model that has to work in production?</h2>
+    <div class="contact-row">
+      <span class="mail" id="mail">wahabakram45@gmail.com</span>
+      <button class="btn" id="copy" type="button">Copy email</button>
+      <a class="btn ghost" href="https://www.linkedin.com/in/abdulwahab045/">LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/wahabakram45">GitHub</a>
+    </div>
+  </div>
+</section>
+<footer><div class="wrap">Abdul Wahab Akram. Lahore, Pakistan.</div></footer>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+  function rng(s){return function(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+  var css=getComputedStyle(document.documentElement);
+  var C={amber:css.getPropertyValue('--amber').trim(),cobalt:css.getPropertyValue('--cobalt').trim(),mist:css.getPropertyValue('--mist').trim(),ink:css.getPropertyValue('--ink').trim()};
+
+  /* ---------- hero: threshold lab ---------- */
+  var svg=document.getElementById('swarm'),r=rng(7),AX=128,BINS=50,BW=20,STEP=13;
+  function gauss(m,sd){var u=1-r(),v=r();return Math.min(.98,Math.max(.02,m+sd*Math.sqrt(-2*Math.log(u))*Math.cos(6.2832*v)))}
+  var pts=[],i;
+  for(i=0;i<90;i++)pts.push({s:gauss(.68,.13),pos:1});
+  for(i=0;i<180;i++)pts.push({s:gauss(.33,.17),pos:0});
+  var shade=el('rect',{x:0,y:0,width:0,height:390,fill:C.cobalt,opacity:.06},svg);
+  el('line',{x1:0,x2:1000,y1:AX,y2:AX,stroke:C.mist,'stroke-width':1.5},svg);
+  var up={},down={};
+  pts.forEach(function(p){
+    var b=Math.min(BINS-1,Math.floor(p.s*BINS)),m=p.pos?up:down;m[b]=(m[b]||0)+1;
+    var cy=p.pos?AX-STEP*m[b]+3:AX+STEP*m[b]-3;
+    p.sx=(b+.5)/BINS;
+    p.n=el('circle',{cx:b*BW+BW/2,cy:cy,r:5.2,'stroke-width':2},svg);
+  });
+  var line=el('line',{y1:0,y2:390,stroke:C.ink,'stroke-width':2.5},svg);
+  var knob=el('circle',{cy:AX,r:11,fill:C.ink,stroke:'#fff','stroke-width':3},svg);
+  var tag=el('text',{y:378,'font-size':19,'font-weight':700,'font-family':'Hanken Grotesk,sans-serif',fill:C.ink},svg);
+  var oP=document.getElementById('o-prec'),oR=document.getElementById('o-rec'),oF=document.getElementById('o-flag'),thr=document.getElementById('thr');
+  document.getElementById('o-total').textContent=pts.length;
+  function draw(t){
+    var tp=0,fp=0,P=0,x=t*1000;
+    pts.forEach(function(p){
+      var f=p.sx>=t;if(p.pos){P++;if(f)tp++}else if(f)fp++;
+      var col=p.pos?C.amber:C.cobalt;
+      p.n.setAttribute('fill',f?col:(p.pos?'none':C.mist));
+      p.n.setAttribute('stroke',p.pos?col:(f?col:C.mist));
+    });
+    shade.setAttribute('x',x);shade.setAttribute('width',1000-x);
+    line.setAttribute('x1',x);line.setAttribute('x2',x);knob.setAttribute('cx',x);
+    tag.textContent='flag everything right of here';
+    tag.setAttribute('x',x>640?x-12:x+14);tag.setAttribute('text-anchor',x>640?'end':'start');
+    oP.textContent=(tp+fp?Math.round(100*tp/(tp+fp)):100)+'%';
+    oR.textContent=Math.round(100*tp/P)+'%';oF.textContent=tp+fp;
+  }
+  function set(t,fromSlider){t=Math.min(.98,Math.max(.02,t));if(!fromSlider)thr.value=Math.round(t*100);draw(t)}
+  var dragging=false,touched=false;
+  function fromEvent(e){var b=svg.getBoundingClientRect();set((e.clientX-b.left)/b.width)}
+  svg.addEventListener('pointerdown',function(e){dragging=touched=true;svg.setPointerCapture(e.pointerId);fromEvent(e)});
+  svg.addEventListener('pointermove',function(e){if(dragging)fromEvent(e)});
+  svg.addEventListener('pointerup',function(){dragging=false});
+  svg.addEventListener('pointercancel',function(){dragging=false});
+  thr.addEventListener('input',function(){touched=true;set(thr.value/100,true)});
+  var target=.56;
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){set(target)}
+  else{var t0=null;set(.1);requestAnimationFrame(function step(ts){if(touched)return;if(!t0)t0=ts;var k=Math.min(1,(ts-t0-350)/1500);if(k<0)k=0;var e=1-Math.pow(1-k,3);set(.1+(target-.1)*e);if(k<1)requestAnimationFrame(step)})}
+
+  /* ---------- octagons ---------- */
+  document.querySelectorAll('.oct').forEach(function(o){var c=o.dataset.c.split(',').map(Number),p=[];for(var k=0;k<8;k++){var a=(22.5+45*k)*Math.PI/180;p.push((c[0]+c[2]*Math.cos(a)).toFixed(1)+','+(c[1]+c[2]*Math.sin(a)).toFixed(1))}o.setAttribute('points',p.join(' '))});
+
+  /* ---------- transition matrix ---------- */
+  var m=document.getElementById('matrix'),r2=rng(21),N=12,S=24,X0=34,Y0=30,a,b;
+  var ft={'font-size':15,'font-family':'Hanken Grotesk,sans-serif',fill:'#4A527A'};
+  for(a=0;a<N;a++)for(b=0;b<N;b++){
+    var d=Math.abs(a-b),v=d===0?.62+.3*r2():d===1?.12+.22*r2():r2()<.25?.1*r2()+.03:.015;
+    el('rect',{x:X0+b*S,y:Y0+a*S,width:S-2,height:S-2,rx:3,fill:C.cobalt,opacity:v.toFixed(2)},m);
+  }
+  el('text',Object.assign({x:X0,y:18},ft),m).textContent='segment next month';
+  var tl=el('text',Object.assign({x:0,y:0,transform:'translate(20,'+(Y0+N*S)+') rotate(-90)'},ft),m);tl.textContent='segment this month';
+  var BX=366,BW2=11,base=Y0+N*S-2;
+  for(a=0;a<14;a++){var w=Math.pow(.84,13-a),h=20+w*230;el('rect',{x:BX+a*13,y:base-h,width:BW2,height:h,rx:3,fill:C.amber,opacity:(.3+.7*w).toFixed(2)},m)}
+  el('text',Object.assign({x:BX,y:18},ft),m).textContent='weight per closing';
+  el('text',Object.assign({x:BX,y:base+20},ft),m).textContent='oldest';
+  el('text',Object.assign({x:BX+14*13-2,y:base+20,'text-anchor':'end'},ft),m).textContent='latest';
+
+  /* ---------- event aggregation ---------- */
+  var ev=document.getElementById('events');
+  el('rect',{width:560,height:190,fill:'#070B1F'},ev);
+  el('line',{x1:20,x2:540,y1:120,y2:120,stroke:'#2A3470','stroke-width':2},ev);
+  var ticks=[[40,0],[96,1],[110,1],[127,1],[139,1],[158,1],[214,0],[262,0],[330,2],[352,2],[371,2],[395,2],[420,2],[446,2],[500,0]];
+  ticks.forEach(function(t){el('rect',{x:t[0]-2,y:t[1]?96:106,width:4,height:t[1]?24:14,rx:2,fill:t[1]?C.amber:'#9AA3CC'},ev)});
+  [[88,166,'Repeated lane swerving'],[322,454,'Consistent drowsy driving']].forEach(function(g){
+    el('path',{d:'M'+g[0]+' 86V74H'+g[1]+'V86',fill:'none',stroke:C.amber,'stroke-width':2},ev);
+    var t=el('text',{x:(g[0]+g[1])/2,y:58,'text-anchor':'middle','font-size':17,'font-weight':700,'font-family':'Hanken Grotesk,sans-serif',fill:C.amber},ev);t.textContent=g[2];
+  });
+  var tt=el('text',{x:20,y:160,'font-size':15,'font-family':'Hanken Grotesk,sans-serif',fill:'#9AA3CC'},ev);tt.textContent='one trip, left to right in time';
+
+  /* ---------- url cells ---------- */
+  var u='secure-bank1ng.account-verify.example/login',box=document.getElementById('url');
+  var heat=function(k){return k===11?.9:(k>=7&&k<=13)?.5:(k<=5)?.22:(k>=15&&k<=28)?.32:(k>=38)?.14:0};
+  u.split('').forEach(function(ch,k){var s=document.createElement('span');s.textContent=ch;s.style.setProperty('--h',heat(k));if(heat(k)>.6)s.style.color='#fff';box.appendChild(s)});
+
+  /* ---------- toy HMM (2-state Viterbi) ---------- */
+  var hm=document.getElementById('hmm'),seed=4;
+  function hmmRun(){
+    var rr=rng(seed++),T=48,truth=[],raw=[],t,k;
+    for(t=0;t<T;t++){truth.push(t>=13&&t<=31?1:0);raw.push(rr()<.16?1-truth[t]:truth[t])}
+    var stay=Math.log(.93),sw=Math.log(.07),ok=Math.log(.82),no=Math.log(.18),V=[[],[]],B=[[],[]];
+    for(k=0;k<2;k++)V[k][0]=Math.log(.5)+(raw[0]===k?ok:no);
+    for(t=1;t<T;t++)for(k=0;k<2;k++){var a=V[k][t-1]+stay,b=V[1-k][t-1]+sw;B[k][t]=a>=b?k:1-k;V[k][t]=Math.max(a,b)+(raw[t]===k?ok:no)}
+    var path=[],cur=V[1][T-1]>V[0][T-1]?1:0;for(t=T-1;t>=0;t--){path[t]=cur;if(t)cur=B[cur][t]}
+    var rows={truth:truth,raw:raw,hmm:path};
+    Object.keys(rows).forEach(function(n){
+      var box=hm.querySelector('[data-row="'+n+'"]');box.textContent='';var wrong=0;
+      rows[n].forEach(function(v,i){var c=document.createElement('i');if(v)c.className=n==='truth'?'truth':'on';box.appendChild(c);if(v!==truth[i])wrong++});
+      var w=hm.querySelector('[data-wrong="'+n+'"]');if(w)w.textContent=wrong+' of '+T+' frames wrong';
+    });
+  }
+  hmmRun();document.getElementById('reroll').addEventListener('click',hmmRun);
+
+  /* ---------- scroll: tracks + nav ---------- */
+  if('IntersectionObserver' in window){
+    if(!matchMedia('(prefers-reduced-motion:reduce)').matches){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.9});
+      document.querySelectorAll('.track').forEach(function(t){t.classList.add('anim');io.observe(t)});
+    }
+    var links={};document.querySelectorAll('.nav-links a').forEach(function(a){links[a.getAttribute('href').slice(1)]=a});
+    var nio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.toggle('on',k===e.target.id)}})},{rootMargin:'-45% 0px -50% 0px'});
+    ['work','approach','toolkit','background','contact'].forEach(function(id){var n=document.getElementById(id);if(n)nio.observe(n)});
+  }
+
+  /* ---------- copy email ---------- */
+  var btn=document.getElementById('copy');
+  btn.addEventListener('click',function(){
+    var txt=document.getElementById('mail').textContent;
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){btn.textContent='Email copied'},function(){btn.textContent='Select the address to copy'});
+    setTimeout(function(){btn.textContent='Copy email'},2200);
+  });
+})();
+</script>
+</body>
+</html>
