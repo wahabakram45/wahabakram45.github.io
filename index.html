@@ -94,6 +94,11 @@ p{margin:0}
 .strip-name{font-size:13.5px;margin-top:14px;display:flex;justify-content:space-between;gap:12px}
 .fig-btn{font:700 14px var(--body);background:transparent;color:inherit;border:1.5px solid currentColor;border-radius:999px;padding:7px 14px;cursor:pointer;margin-top:16px}
 .fig-btn:hover{background:var(--amber);color:var(--ink);border-color:var(--amber)}
+.player{display:flex;gap:12px;align-items:center;margin-top:12px;font-size:13.5px;color:#9AA3CC}
+.player .fig-btn{margin-top:0;min-width:74px;color:#E9ECF8}
+.player input{flex:1;min-width:0;margin:0;accent-color:var(--amber)}
+.player span{white-space:nowrap;font-variant-numeric:tabular-nums;min-width:96px;text-align:right}
+.strip i.cur{outline:2px solid #fff;outline-offset:1px}
 
 /* approach */
 .ways{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 56px;margin-top:36px}
@@ -418,21 +423,8 @@ footer{padding:26px 0;font-size:14px;color:var(--soft)}
 
   <article class="case">
     <div class="fig">
-      <svg viewBox="0 0 560 300" role="img" aria-label="Dashcam view of an intersection. The stop sign facing the driver is kept, a stop sign for cross traffic is dropped.">
-        <rect width="560" height="300" fill="#070B1F"/>
-        <rect y="128" width="560" height="20" fill="#1B2350"/>
-        <polygon points="238,138 322,138 520,300 40,300" fill="#1B2350"/>
-        <path d="M280 150V300" stroke="#E9ECF8" stroke-width="3" stroke-dasharray="14 16" opacity=".55"/>
-        <path d="M250 150H310" stroke="#E9ECF8" stroke-width="4" opacity=".8"/>
-        <path d="M392 132V196" stroke="#9AA3CC" stroke-width="4"/>
-        <polygon class="oct" data-c="392,112,21" fill="#E5402F" stroke="#fff" stroke-width="2"/>
-        <rect x="362" y="82" width="60" height="60" fill="none" stroke="#FFAA1A" stroke-width="3"/>
-        <text x="362" y="72" fill="#FFAA1A" font-size="17" font-weight="700" font-family="Hanken Grotesk,sans-serif">my lane: keep</text>
-        <path d="M96 118V136" stroke="#9AA3CC" stroke-width="3"/>
-        <polygon class="oct" data-c="96,108,11" fill="#E5402F" opacity=".55"/>
-        <rect x="78" y="90" width="36" height="36" fill="none" stroke="#9AA3CC" stroke-width="2" stroke-dasharray="5 4"/>
-        <text x="40" y="78" fill="#9AA3CC" font-size="17" font-family="Hanken Grotesk,sans-serif">cross traffic: drop</text>
-      </svg>
+      <svg id="ssv" viewBox="0 0 560 300" role="img" aria-label="Animated dashcam view of a truck approaching a stop sign. Use the frame slider to step through it."></svg>
+      <div class="player" id="ssv-player"></div>
       <div class="chain" style="margin-top:18px">
         <div class="node"><b>Detector</b>finds every stop sign</div>
         <div class="node"><b>Scene head</b>what kind of junction</div>
@@ -444,7 +436,7 @@ footer{padding:26px 0;font-size:14px;color:var(--soft)}
         <p class="strip-name"><span>After the HMM</span><span data-wrong="hmm"></span></p><div class="strip" data-row="hmm"></div>
         <button class="fig-btn" type="button" id="reroll">Shuffle the noise</button>
       </div>
-      <p class="fig-note">A toy two-state HMM running in your browser over 48 frames. It can't flip state on one odd frame, so the flicker goes away.</p>
+      <p class="fig-note">Illustration. Move through the frames: the per-frame guess flickers, the HMM state doesn't. It's a toy two-state HMM running in your browser, and it can't flip on one odd frame.</p>
     </div>
     <div class="case-text">
       <h3>Stop sign violations, minus the signs that aren't yours</h3>
@@ -478,22 +470,9 @@ footer{padding:26px 0;font-size:14px;color:var(--soft)}
 
   <article class="case">
     <div class="fig">
-      <svg viewBox="0 0 560 300" role="img" aria-label="Dashcam view of a highway. The vehicle ahead is tracked across frames and triggers a forward collision warning.">
-        <rect width="560" height="300" fill="#070B1F"/>
-        <polygon points="225,110 335,110 560,300 0,300" fill="#1B2350"/>
-        <path d="M280 110V300" stroke="#E9ECF8" stroke-width="3" stroke-dasharray="14 16" opacity=".5"/>
-        <rect x="292" y="118" width="34" height="30" fill="none" stroke="#FFAA1A" stroke-width="1.5" opacity=".3"/>
-        <rect x="296" y="128" width="50" height="44" fill="none" stroke="#FFAA1A" stroke-width="2" opacity=".55"/>
-        <rect x="312" y="160" width="96" height="84" rx="6" fill="#2A3470"/>
-        <rect x="320" y="218" width="16" height="9" fill="#E5402F"/><rect x="384" y="218" width="16" height="9" fill="#E5402F"/>
-        <rect x="304" y="152" width="112" height="100" fill="none" stroke="#FFAA1A" stroke-width="3"/>
-        <text x="304" y="272" fill="#FFAA1A" font-size="17" font-weight="700" font-family="Hanken Grotesk,sans-serif">track 7: closing</text>
-        <rect x="196" y="140" width="40" height="32" rx="4" fill="#2A3470"/>
-        <rect x="190" y="134" width="52" height="44" fill="none" stroke="#9AA3CC" stroke-width="2" stroke-dasharray="5 4"/>
-        <text x="70" y="126" fill="#9AA3CC" font-size="17" font-family="Hanken Grotesk,sans-serif">track 4: other lane</text>
-        <rect x="150" y="22" width="260" height="44" rx="22" fill="#E5402F"/>
-        <text x="280" y="50" text-anchor="middle" fill="#fff" font-size="19" font-weight="700" font-family="Hanken Grotesk,sans-serif">Forward collision warning</text>
-      </svg>
+      <svg id="fcw" viewBox="0 0 560 300" role="img" aria-label="Animated dashcam view of a highway. Use the frame slider to watch the vehicle ahead close in and trigger a warning."></svg>
+      <div class="player" id="fcw-player"></div>
+      <p class="fig-note">Illustration. Move through the frames: the vehicle passing in the other lane never triggers an alert, the one closing in your lane does.</p>
     </div>
     <div class="case-text">
       <h3>Forward collision warnings drivers stop ignoring</h3>
@@ -716,7 +695,7 @@ footer{padding:26px 0;font-size:14px;color:var(--soft)}
   var grp;u.split('').forEach(function(ch,k){if(!grp){grp=document.createElement('b');box.appendChild(grp)}var s=document.createElement('span');s.textContent=ch;s.style.setProperty('--h',heat(k));if(heat(k)>.6)s.style.color='#fff';grp.appendChild(s);if(ch==='.')grp=null});
 
   /* ---------- toy HMM (2-state Viterbi) ---------- */
-  var hm=document.getElementById('hmm'),seed=4;
+  var hm=document.getElementById('hmm'),seed=4,H={},ssvShow;
   function hmmRun(){
     var rr=rng(seed++),T=48,truth=[],raw=[],t,k;
     for(t=0;t<T;t++){truth.push(t>=13&&t<=31?1:0);raw.push(rr()<.16?1-truth[t]:truth[t])}
@@ -724,14 +703,92 @@ footer{padding:26px 0;font-size:14px;color:var(--soft)}
     for(k=0;k<2;k++)V[k][0]=Math.log(.5)+(raw[0]===k?ok:no);
     for(t=1;t<T;t++)for(k=0;k<2;k++){var a=V[k][t-1]+stay,b=V[1-k][t-1]+sw;B[k][t]=a>=b?k:1-k;V[k][t]=Math.max(a,b)+(raw[t]===k?ok:no)}
     var path=[],cur=V[1][T-1]>V[0][T-1]?1:0;for(t=T-1;t>=0;t--){path[t]=cur;if(t)cur=B[cur][t]}
-    var rows={truth:truth,raw:raw,hmm:path};
+    var rows={truth:truth,raw:raw,hmm:path};H=rows;
     Object.keys(rows).forEach(function(n){
       var box=hm.querySelector('[data-row="'+n+'"]');box.textContent='';var wrong=0;
       rows[n].forEach(function(v,i){var c=document.createElement('i');if(v)c.className=n==='truth'?'truth':'on';box.appendChild(c);if(v!==truth[i])wrong++});
       var w=hm.querySelector('[data-wrong="'+n+'"]');if(w)w.textContent=wrong+' of '+T+' frames wrong';
     });
+    if(ssvShow)ssvShow();
   }
   hmmRun();document.getElementById('reroll').addEventListener('click',hmmRun);
+
+  /* ---------- scenes you can step through ---------- */
+  var FT='Hanken Grotesk,sans-serif';
+  function octPts(cx,cy,r){var p=[];for(var k=0;k<8;k++){var a=(22.5+45*k)*Math.PI/180;p.push((cx+r*Math.cos(a)).toFixed(1)+','+(cy+r*Math.sin(a)).toFixed(1))}return p.join(' ')}
+  function attrs(n,a){for(var k in a)n.setAttribute(k,a[k])}
+  function player(id,N,start,draw){
+    var holder=document.getElementById(id),pb=document.createElement('button'),rg=document.createElement('input'),lab=document.createElement('span'),timer=null;
+    pb.type='button';pb.className='fig-btn';pb.textContent='Play';
+    rg.type='range';rg.min=0;rg.max=N-1;rg.value=start;rg.setAttribute('aria-label','Frame');
+    holder.appendChild(pb);holder.appendChild(rg);holder.appendChild(lab);
+    function show(){var t=+rg.value;lab.textContent='frame '+(t+1)+' of '+N;draw(t)}
+    function stop(){clearInterval(timer);timer=null;pb.textContent='Play'}
+    pb.addEventListener('click',function(){
+      if(timer){stop();return}
+      if(+rg.value>=N-1)rg.value=0;
+      pb.textContent='Pause';
+      timer=setInterval(function(){if(+rg.value>=N-1){stop();return}rg.value=+rg.value+1;show()},130);
+    });
+    rg.addEventListener('input',function(){if(timer)stop();show()});
+    show();return show;
+  }
+
+  var sv=document.getElementById('ssv');
+  el('rect',{width:560,height:300,fill:'#070B1F'},sv);
+  el('rect',{y:128,width:560,height:20,fill:'#1B2350'},sv);
+  el('polygon',{points:'238,138 322,138 520,300 40,300',fill:'#1B2350'},sv);
+  var sDash=el('path',{d:'M280 150V300',stroke:'#E9ECF8','stroke-width':3,'stroke-dasharray':'14 16',opacity:.55},sv);
+  var sFar=el('polygon',{fill:'#E5402F',opacity:.6},sv),sFarBox=el('rect',{fill:'none','stroke-width':2},sv);
+  var sPole=el('path',{stroke:'#9AA3CC','stroke-width':3},sv),sSign=el('polygon',{fill:'#E5402F',stroke:'#fff','stroke-width':2},sv),sBox=el('rect',{fill:'none','stroke-width':3},sv);
+  var sTag=el('text',{'font-size':16,'font-weight':700,'font-family':FT},sv);
+  var sPill=el('rect',{x:14,y:12,width:262,height:34,rx:17,'stroke-width':2},sv),sPillT=el('text',{x:145,y:35,'text-anchor':'middle','font-size':16,'font-weight':700,'font-family':FT},sv);
+  function drawSSV(t){
+    if(!H.raw)return;
+    var vis=t>=6&&t<=31,p=Math.min(1,Math.max(0,(t-6)/25)),e=p*p,cx=326+e*170,cy=126-e*56,r=5+e*27,mine=H.raw[t]===1,st=H.hmm[t]===1,col=mine?C.amber:'#9AA3CC',dash=mine?'none':'5 4';
+    sDash.setAttribute('stroke-dashoffset',t*7);
+    attrs(sSign,{points:octPts(cx,cy,r),display:vis?'inline':'none'});
+    attrs(sPole,{d:'M'+cx.toFixed(1)+' '+(cy+r).toFixed(1)+'V'+(140+e*130).toFixed(1),display:vis?'inline':'none'});
+    var fx=vis?170-e*120:150,fy=vis?124-e*14:124,fr=vis?5+e*7:5;
+    attrs(sFar,{points:octPts(fx,fy,fr)});
+    attrs(sFarBox,{x:fx-fr-5,y:fy-fr-5,width:2*fr+10,height:2*fr+10,stroke:vis?'#9AA3CC':col,'stroke-dasharray':vis?'5 4':dash});
+    if(vis){
+      attrs(sBox,{x:cx-r-7,y:cy-r-7,width:2*r+14,height:2*r+14,display:'inline',stroke:col,'stroke-dasharray':dash});
+      attrs(sTag,r>15?{x:cx-r-16,y:cy+5,'text-anchor':'end',fill:col}:{x:cx-r-7,y:cy-r-14,'text-anchor':'start',fill:col});sTag.textContent=mine?'per-frame: mine':'per-frame: not mine';
+    }else{
+      sBox.setAttribute('display','none');
+      attrs(sTag,{x:fx-fr-5,y:fy-fr-12,'text-anchor':'start',fill:col});sTag.textContent=mine?'per-frame: mine (false alarm)':'per-frame: not mine';
+    }
+    attrs(sPill,{fill:st?C.amber:'none',stroke:st?C.amber:'#9AA3CC'});
+    sPillT.setAttribute('fill',st?C.ink:'#9AA3CC');sPillT.textContent=st?'HMM: stop sign for my lane':'HMM: no sign for my lane';
+    hm.querySelectorAll('.strip').forEach(function(s){for(var i=0;i<s.children.length;i++)s.children[i].classList.toggle('cur',i===t)});
+  }
+
+  var fv=document.getElementById('fcw');
+  el('rect',{width:560,height:300,fill:'#070B1F'},fv);
+  el('polygon',{points:'225,110 335,110 560,300 0,300',fill:'#1B2350'},fv);
+  var fDash=el('path',{d:'M280 110V300',stroke:'#E9ECF8','stroke-width':3,'stroke-dasharray':'14 16',opacity:.5},fv);
+  var g2=el('rect',{fill:'none',stroke:C.amber,'stroke-width':1.5,opacity:.25},fv),g1=el('rect',{fill:'none',stroke:C.amber,'stroke-width':2,opacity:.5},fv);
+  var oCar=el('rect',{rx:4,fill:'#2A3470'},fv),oBox=el('rect',{fill:'none',stroke:'#9AA3CC','stroke-width':2,'stroke-dasharray':'5 4'},fv),oTag=el('text',{'font-size':16,fill:'#9AA3CC','font-family':FT},fv);
+  var lCar=el('rect',{rx:6,fill:'#2A3470'},fv),lL=el('rect',{fill:'#E5402F'},fv),lR=el('rect',{fill:'#E5402F'},fv),lBox=el('rect',{fill:'none',stroke:C.amber,'stroke-width':3},fv),lTag=el('text',{'font-size':16,'font-weight':700,fill:C.amber,'font-family':FT},fv);
+  var aPill=el('rect',{x:150,y:14,width:260,height:44,rx:22,fill:'#E5402F'},fv),aT=el('text',{x:280,y:42,'text-anchor':'middle',fill:'#fff','font-size':19,'font-weight':700,'font-family':FT},fv);aT.textContent='Forward collision warning';
+  function leadD(t){return t<14?.38:t>40?.8:.38+.42*(t-14)/26}
+  function geo(d,right){var w=22+d*150,h=w*.8,cx=right?307+d*113:253-d*113,by=110+d*190;return{x:cx-w/2,y:by-h,w:w,h:h}}
+  function setBox(n,g,pad){attrs(n,{x:(g.x-pad).toFixed(1),y:(g.y-pad).toFixed(1),width:(g.w+2*pad).toFixed(1),height:(g.h+2*pad).toFixed(1)})}
+  function drawFCW(t){
+    var d=leadD(t),g=geo(d,true),closing=t>14&&t<=40,warn=d>.62,lit=closing||warn?1:.45;
+    fDash.setAttribute('stroke-dashoffset',t*7);
+    setBox(lCar,g,0);setBox(lBox,g,7);setBox(g1,geo(leadD(Math.max(0,t-5)),true),7);setBox(g2,geo(leadD(Math.max(0,t-10)),true),7);
+    attrs(lL,{x:g.x+g.w*.1,y:g.y+g.h*.68,width:g.w*.17,height:g.h*.11,opacity:lit});
+    attrs(lR,{x:g.x+g.w*.73,y:g.y+g.h*.68,width:g.w*.17,height:g.h*.11,opacity:lit});
+    attrs(lTag,{x:Math.min(g.x-7,376),y:Math.min(g.y+g.h+26,292)});lTag.textContent=warn?'track 7: closing fast':closing?'track 7: closing':'track 7: steady';
+    var od=.12+t*.045,ov=t>=2&&od<1.3,og=geo(od,false),show=ov?'inline':'none';
+    oCar.setAttribute('display',show);oBox.setAttribute('display',show);oTag.setAttribute('display',show);
+    setBox(oCar,og,0);setBox(oBox,og,6);attrs(oTag,{x:Math.max(8,og.x-6),y:Math.max(og.y-12,84)});oTag.textContent='track 4: other lane, ignored';
+    aPill.setAttribute('display',warn?'inline':'none');aT.setAttribute('display',warn?'inline':'none');
+  }
+  ssvShow=player('ssv-player',48,20,drawSSV);
+  player('fcw-player',48,24,drawFCW);
 
   /* ---------- scroll: tracks + nav ---------- */
   if('IntersectionObserver' in window){
